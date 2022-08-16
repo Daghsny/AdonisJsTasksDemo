@@ -1,0 +1,33 @@
+@layout('layouts/main')
+@set('title', 'Home page')
+
+@section('body')
+<p class="py-6 block max-w-2xl mt-4 text-xl text-grey-500 dark:text-grey-300"> la liste des task à remlpir
+  cotidiennement
+</p>
+
+<ul class="list-group ">
+  @each(task in tasks)
+
+  <div class="container">
+    <li class="list-group-item">
+      <div class="d-flex justify-content-end">
+        <div class="mr-auto p-2">
+          <a href="/task/edit/{{task.id}}">
+            {{task.id}} : {{task.title}} {{task.description}}</a>
+        </div>
+        <div class="p-2">
+          <form action="{{ '/task/' + task.id + '?_method=DELETE'}}" method="POST">
+            <button type="submit" class="btn btn-danger  btn-sm "> Delete </button>
+          </form>
+        </div>
+
+      </div>
+  </div>
+
+  </li>
+  @endeach
+</ul>
+
+
+@endsection

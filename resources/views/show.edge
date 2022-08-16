@@ -1,0 +1,25 @@
+@layout('layouts/main')
+
+@section('body')
+  
+<div class="container">
+
+{{task.title}}
+
+</div>
+
+<div class="container -md">
+        
+            {{--  <form action="post">  --}}
+            {{--  Route.post('/task/edit/:id', 'TasksController.store').as('update')  --}}
+           <form action="{{ '/task/edit/' + task.id + '?_method=UPDATE'}}" method="POST">
+             
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" value="{{task.title}}"><br>
+                <label for="description"> Description:</label><br>
+                <input type="text" id="description" name="description" value="{{task.description}}"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </form>
+
+@endsection
